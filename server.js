@@ -77,28 +77,76 @@ app.post('/send', (req, res) => {
 
 
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'expsoltechfeedback@gmail.com',
-      pass: 'vwgempvhjtjpwkxq'
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
-  
+ const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'expsoltechfeedback@gmail.com',
+    pass: 'vwgempvhjtjpwkxq'
+  }
+});
 
-  const mailOptions = {
-    from: 'expsoltechfeedback@gmail.com',
-    to: 'daniel.est777@gmail.com',
-    subject: `Interview Evaluation - ${name}, ${role}`,
-    text: output,
-    headers: {
-      'Content-Type': 'text/html; charset=UTF-8' 
-    },
-    
-  };
+const mailOptions = {
+  from: 'expsoltechfeedback@gmail.com',
+  to: 'Daniel@expsoltechs.com',
+  subject: `Interview Evaluation - ${name}, ${role}`,
+  html: `
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-family: Arial, sans-serif; color: #1e293b;">Interview Evaluation - ${name}, ${role}</h2>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <thead>
+      <tr style="background-color: #1e293b; color: #ffffff;">
+        <th style="padding: 12px; text-align: left; font-size: 14px;">Evaluation Criteria</th>
+        <th style="padding: 12px; text-align: left; font-size: 14px;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Interviewer Name</strong></td>
+        <td style="padding: 10px;">John Doe</td>
+      </tr>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Candidate Name</strong></td>
+        <td style="padding: 10px;">${name}</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Applied Role</strong></td>
+        <td style="padding: 10px; background-color: #f1f5f9;">${role}</td>
+      </tr>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Communication (out of 5)</strong></td>
+        <td style="padding: 10px;">4.5</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Technical Skills (out of 5)</strong></td>
+        <td style="padding: 10px; background-color: #f1f5f9;">4</td>
+      </tr>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Job Knowledge (out of 5)</strong></td>
+        <td style="padding: 10px;">4</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Project Contribution</strong></td>
+        <td style="padding: 10px; background-color: #f1f5f9;">Good understanding and active participation</td>
+      </tr>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Overall Score (out of 5)</strong></td>
+        <td style="padding: 10px;">4.2</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Reviewer Comments</strong></td>
+        <td style="padding: 10px; background-color: #f1f5f9;">Strong Angular skills, room to grow in backend concepts.</td>
+      </tr>
+      <tr style="background-color: #f8fafc;">
+        <td style="padding: 10px;"><strong>Final Decision</strong></td>
+        <td style="padding: 10px;">Selected</td>
+      </tr>
+    </tbody>
+  </table>
+  `,
+};
 
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
