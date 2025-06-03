@@ -105,7 +105,7 @@ const mailOptions = {
     <tbody>
       <tr style="background-color: #f8fafc;">
         <td style="padding: 10px;"><strong>Interviewer Name</strong></td>
-        <td style="padding: 10px;">John Doe</td>
+        <td style="padding: 10px;">${interviewername}</td>
       </tr>
       <tr style="background-color: #f8fafc;">
         <td style="padding: 10px;"><strong>Candidate Name</strong></td>
