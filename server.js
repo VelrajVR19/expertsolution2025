@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 app.post('/send', (req, res) => {
   const {interviewername, name, role, communication, technical, jobKnowledge, contribution, overall, comments, finalResult } = req.body;
-
+  console.log("req.body",req.body);
   const output = `
   <div style="text-align: center; margin-bottom: 30px;">
     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSjxqhopL41jucffDJTIFNRRTPnEhV0jDXuHBHEhGwhKdSTXNby" alt="Company Logo" style="max-width: 50px;"/>
@@ -89,7 +89,7 @@ app.post('/send', (req, res) => {
 
 const mailOptions = {
   from: 'expsoltechfeedback@gmail.com',
-  to: 'Daniel@expsoltechs.com',
+  to: 'velrajavelraja@gmai.com',
   subject: `Interview Evaluation - ${name}, ${role}`,
   html:output,
 };
