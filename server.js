@@ -89,7 +89,7 @@ app.post('/send', (req, res) => {
 
 const mailOptions = {
   from: 'expsoltechfeedback@gmail.com',
-  to: 'velrajavelraja@gmai.com',
+  to: 'velrajavelraja@gmail.com',
   subject: `Interview Evaluation - ${name}, ${role}`,
   html:output,
 };
