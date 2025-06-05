@@ -89,64 +89,9 @@ app.post('/send', (req, res) => {
 
 const mailOptions = {
   from: 'expsoltechfeedback@gmail.com',
-  to: 'Daniel@expsoltechs.com',
+  to: 'velraja@expsoltechs.com',
   subject: `Interview Evaluation - ${name}, ${role}`,
-  html: `
-  <div style="text-align: center; margin-bottom: 30px;">
-    <h2 style="font-family: Arial, sans-serif; color: #1e293b;">Interview Evaluation - ${name}, ${role}</h2>
-  </div>
- <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-    <thead>
-      <tr style="background-color: #1e293b; color: #ffffff;">
-        <th style="padding: 12px; text-align: left; font-size: 14px;">Evaluation Criteria</th>
-        <th style="padding: 12px; text-align: left; font-size: 14px;">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Interviewer Name</strong></td>
-        <td style="padding: 10px;">${interviewername}</td>
-      </tr>
-
-      <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Candidate Name</strong></td>
-        <td style="padding: 10px;">${name}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Applied Role</strong></td>
-        <td style="padding: 10px; background-color: #f1f5f9;">${role}</td>
-      </tr>
-      <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Communication (out of 5)</strong></td>
-        <td style="padding: 10px;">${communication}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Technical Skills (out of 5)</strong></td>
-        <td style="padding: 10px; background-color: #f1f5f9;">${technical}</td>
-      </tr>
-      <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Job Knowledge (out of 5)</strong></td>
-        <td style="padding: 10px;">${jobKnowledge}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Project Contribution</strong></td>
-        <td style="padding: 10px; background-color: #f1f5f9;">${contribution}</td>
-      </tr>
-      <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Overall Score (out of 5)</strong></td>
-        <td style="padding: 10px;">${overall}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; background-color: #f1f5f9;"><strong>Reviewer Comments</strong></td>
-        <td style="padding: 10px; background-color: #f1f5f9;">${comments}</td>
-      </tr>
-      <tr style="background-color: #f8fafc;">
-        <td style="padding: 10px;"><strong>Final Decision</strong></td>
-        <td style="padding: 10px;">${finalResult}</td>
-      </tr>
-    </tbody>
-  </table>
-  `,
+  html:output,
 };
 
   transporter.sendMail(mailOptions, (err, info) => {
